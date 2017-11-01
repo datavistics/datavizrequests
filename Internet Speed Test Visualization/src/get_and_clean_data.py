@@ -33,6 +33,10 @@ df.ping = pd.to_numeric(df.ping, errors='coerce')
 df.download = pd.to_numeric(df.download, errors='coerce')
 df.upload = pd.to_numeric(df.upload, errors='coerce')
 
+df.set_index(df.datetime, inplace=True)
+
 project_dir = os.path.join(os.path.dirname(__file__), os.pardir)
-output_file = os.path.join(project_dir, 'data', 'internet_speed_test_data.csv')
-df.to_csv(output_file)
+output_csv = os.path.join(project_dir, 'data', 'internet_speed_test_data.csv')
+output_pkl = os.path.join(project_dir, 'data', 'internet_speed_test_data.pkl')
+df.to_csv(output_csv)
+df.to_pickle(output_pkl)
